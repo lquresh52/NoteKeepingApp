@@ -155,4 +155,4 @@ STATICFILES_DIRS=[
 
 STATIC_ROOT= os.path.join(BASE_DIR,'django_assets')
 
-# superuser id : quresh \ pass : 1234
+# superuser id : quresh \ pass : 1234 herkou admin  : quresh pass: Chalhatbe1234

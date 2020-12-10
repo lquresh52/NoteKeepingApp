@@ -137,7 +137,7 @@
 
       var wrapper = document.getElementById('list-wrapper');
       wrapper.innerHTML = '';
-      var url = 'http://localhost:8000/api/list-notes/';
+      var url = 'https://note-keeping.herokuapp.com/api/list-notes/';
 
       var bgColor = ['#000000', '#202040', '#5a082d', '#200f21', '#525252', '#343434', '#393232', '#342056', '#01005e', '#3e432e', '#303841', '#443737']
       var btnColor = ['#892cdc', '#ff6363', '#B03B52', '#f638dc', '#ca3e47', '#055e68', '#ed8d8d', '#639cd9', '#17b794', '#a7d129', '#f6c90e', '#ff4d00']
@@ -206,10 +206,10 @@
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       console.log("Form submited");
-      var url = 'http://localhost:8000/api/create-note/';
+      var url = 'https://note-keeping.herokuapp.com/api/create-note/';
 
       if (activeItem != null) {
-        url = `http://localhost:8000/api/update-note/${activeItem.id}/`;
+        url = `https://note-keeping.herokuapp.com/api/update-note/${activeItem.id}/`;
         activeItem = null;
       }
 
@@ -252,7 +252,7 @@
       var retVal = confirm("Do you want to delete this post ?");
       if (retVal == true) {
 
-        var url = `http://localhost:8000/api/delete-note/${item.id}/`;
+        var url = `https://note-keeping.herokuapp.com/api/delete-note/${item.id}/`;
         fetch(url, {
           method: 'DELETE',
           headers: {
