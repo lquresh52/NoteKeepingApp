@@ -1,0 +1,42 @@
+body{
+    background-color: #202124;
+}
+.navbar{
+    background-color: #202124 !important;
+    border-bottom: 1px solid #11dca6;
+}
+.input1{
+    background-color: #202124 !important;
+    font-weight: 700;
+}
+.form-control:focus{
+    background-color: #202124;
+    border-color: #11dca6 !important;
+    box-shadow: 0px 0px 10px 3px #11DCA6 !important;
+}
+.main{
+    margin-top: 10px;
+}
+.btn-primary{
+    border: none;
+    outline: none;
+}
+.btn:focus,.btn:active {
+    outline: none !important;
+    box-shadow: none;
+ }
+.btn{
+    outline: none !important;
+}
+.submit-btn{
+    background-color: #11DCA6;
+    color: #202124;
+}
+.div-submit-btn{
+    display: flex;
+    justify-content: center;
+}
+
+.card-txt-color{
+    color: white !important;
+}

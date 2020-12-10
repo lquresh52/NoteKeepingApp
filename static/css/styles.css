@@ -1,0 +1,191 @@
+body{
+    background-color: #202124;
+}
+.navbar{
+    background-color: #202124 !important;
+    border-bottom: 1px solid #11dca6;
+}
+.input1{
+    background-color: #202124 !important;
+    font-weight: 700;
+}
+.form-control{
+    color: #11DCA6;
+}
+.form-control:focus{
+    color: #11DCA6;
+    background-color: #202124;
+    border-color: #11dca6 !important;
+    box-shadow: 0px 0px 10px 3px #11DCA6 !important;
+}
+.main{
+    margin-top: 10px;
+}
+.main1{
+    margin-top: 7%;
+}
+.btn-primary{
+    border: none;
+    outline: none;
+}
+.btn:focus,.btn:active {
+    outline: none !important;
+    box-shadow: none;
+ }
+.btn{
+    outline: none !important;
+}
+.submit-btn:hover{
+    background-color: #11DCA6 !important;
+    color: #202124 !important;
+    border: none !important;
+    outline: none !important;
+}
+.submit-btn{
+    background-color: #11DCA6;
+    color: #202124;
+    font-weight: 700;
+}
+.div-submit-btn{
+    display: flex;
+    justify-content: center;
+}
+
+.card-txt-color{
+    color: white !important;
+}
+.login{
+    color: #11DCA6;
+    text-align: center;
+    margin-bottom: 10%;
+}
+.login-form{
+    padding: 0px 80px;
+}
+.navbar-dark .navbar-brand{
+    color: #11DCA6;
+}
+.modal-content{
+    background-color: #202124;
+}
+.login-signup-btn{
+    font-size: xx-large;
+    width: 230px;
+    height: 65px;
+}
+
+#outPopUp {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.alert-secondary{
+    background-color: #11DCA6;
+    color: white;
+}
+.btn-close{
+    float: right;
+    background-color: #11dca6;
+    font-weight: 500;
+    border-radius: 3px;
+}
+
+
+
+
+
+#style-2::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 10px;
+	background-color: #F5F5F5;
+}
+
+#style-2::-webkit-scrollbar
+{
+	width: 3px;
+	background-color: #F5F5F5;
+}
+
+#style-2::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #202124;
+}
+
+
+
+
+
+
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+
+/* html, body{
+  width:100%;
+  height: 100%;
+  font-weight: 800;
+}
+
+body{
+  background: #030321;
+  font-family: Arial;
+} */
+
+svg {
+    display: block;
+    font: 10.5em 'Montserrat';
+    width: auto;
+    height: auto;
+    margin: 0 auto;
+}
+
+.text-copy {
+    fill: none;
+    stroke: white;
+    stroke-dasharray: 6% 29%;
+    stroke-width: 5px;
+    stroke-dashoffset: 0%;
+    animation: stroke-offset 5.5s infinite linear;
+}
+
+.text-copy:nth-child(1){
+    /* stroke: #4D163D; */
+    stroke: #FF6600;
+	animation-delay: -1;
+}
+
+.text-copy:nth-child(2){
+    /* stroke: #840037; */
+    /* stroke: #5a082d; */
+    
+    stroke: #11dca6;
+	animation-delay: -2s;
+}
+
+.text-copy:nth-child(3){
+    /* stroke: #BD0034; */
+    /* stroke: #ed8d8d; */
+    stroke: #FF6600;
+	animation-delay: -3s;
+}
+
+.text-copy:nth-child(4){
+    /* stroke: #BD0034; */
+    stroke: #11dca6;
+	animation-delay: -4s;
+}
+
+.text-copy:nth-child(5){
+	stroke: #FF6600;
+	animation-delay: -5s;
+}
+
+@keyframes stroke-offset{
+	100% {stroke-dashoffset: -35%;}
+}
+
+
+

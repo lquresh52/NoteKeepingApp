@@ -1,0 +1,1 @@
+web: gunicorn note_keeping_drf.wsgi

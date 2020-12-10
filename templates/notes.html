@@ -1,0 +1,315 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notes</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" style="color: #11DCA6;">Keep Note</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto">
+        <!-- <li class="nav-item active">
+          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Dropdown
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+        </li> -->
+        <div class="form-inline my-2 my-lg-0">
+          <li class="form-control mr-sm-2" style="background-color: #11DCA6;color: #202124;font-weight: 500;">
+            <p style="text-transform: capitalize;">{{request.user.first_name}}</p>
+          </li>
+          <li class="btn my-2 my-sm-0" style="color: #11DCA6; cursor: pointer;">
+            <a style="color: #11DCA6; cursor: pointer;" href="{% url 'logout' %}">Logout</a>
+          </li>
+        </div>
+
+      </ul>
+    </div>
+  </nav>
+
+
+  <div class="container main1">
+    <div class="row">
+      <div class="col-sm-12 col-md-8 offset-md-2" id="form-wrapper">
+        <form id="form">
+          <div class="form-group">
+            <label for="exampleInputtexttitle" style="color: white;">Title</label>
+            <input type="text" class="form-control input1" id="title" aria-describedby="emailHelp" placeholder="Title"
+              required>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputnote" id="note-label" style="color: white;display: none;">Note</label>
+            <input type="text" class="form-control input1" id="note" placeholder="Note" style="display: none;" required>
+          </div>
+          <input id="user" name="user" value="{{request.user.id}}" hidden>
+          <div class="div-submit-btn">
+            <button type="submit" class="btn btn-primary submit-btn">Submit</button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+
+    <div class="row mt-5 mb-5" id="list-wrapper">
+      <!-- <div class="col-md-4 mt-5 mb-5" >
+        <div class="card" id="card1"
+          style="width: 18rem;border-radius: 8px;box-shadow: 0px 0px 10px 0px rgb(253 253 253);">
+          <div class="card-body">
+            <h5 class="card-title card-txt-color">Special title treatment</h5>
+            <p class="card-text card-txt-color">With supporting text below as a natural lead-in to additional content.
+            </p>
+            <a href="#" id="cardBtn1" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+      </div> -->
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+
+
+
+  <script type="text/javascript">
+
+    function getCookie(name) {
+      let cookieValue = null;
+      if (document.cookie && document.cookie !== '') {
+          const cookies = document.cookie.split(';');
+          for (let i = 0; i < cookies.length; i++) {
+              const cookie = cookies[i].trim();
+              // Does this cookie string begin with the name we want?
+              if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                  cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                  break;
+              }
+          }
+      }
+      return cookieValue;
+    }
+  
+  
+    const csrftoken = getCookie('csrftoken');
+
+    var activeItem = null;
+
+    buildList()
+
+    function buildList() {
+
+      var wrapper = document.getElementById('list-wrapper');
+      wrapper.innerHTML = '';
+      var url = 'http://localhost:8000/api/list-notes/';
+
+      var bgColor = ['#000000', '#202040', '#5a082d', '#200f21', '#525252', '#343434', '#393232', '#342056', '#01005e', '#3e432e', '#303841', '#443737']
+      var btnColor = ['#892cdc', '#ff6363', '#B03B52', '#f638dc', '#ca3e47', '#055e68', '#ed8d8d', '#639cd9', '#17b794', '#a7d129', '#f6c90e', '#ff4d00']
+      var arrLen = bgColor.length;
+      console.log("Len", arrLen);
+
+
+
+      fetch(url)
+        .then((resp) => resp.json())
+        .then(function (data) {
+          console.log('Data : ', data);
+          var list = data;
+          for (var i in list) {
+
+            var randonNum = Math.floor(Math.random() * Math.floor(arrLen));
+            console.log("randon num", randonNum);
+            console.log("colors codes : ", bgColor[randonNum], btnColor[randonNum]);
+            var postCreatedAt = new Date(list[i].created_at);
+            var postCreatedAtAmPm = amPm(postCreatedAt.getHours())
+            var postUpdatedAt = new Date(list[i].updated_at);
+            var postUpdatedAtAmPm = amPm(postUpdatedAt.getHours())
+
+            var item = `
+          <div class="col-md-4 mt-5 mb-5">
+            <div class="card" id="data-row-${i}" style="width: 18rem;border-radius: 8px;background-color:${bgColor[randonNum]};box-shadow: 0px 0px 10px ${btnColor[randonNum]};">
+              <div class="card-body">
+                <h5 class="card-title card-txt-color">${list[i].title}</h5>
+                <p class="card-title" style="color:white;font-size:12px;">Posted on: ${postCreatedAt.getDate()}-${(postCreatedAt.getMonth())+1}-${postCreatedAt.getFullYear()} ${(postCreatedAt.getHours())}:${(postCreatedAt.getMinutes())} ${postCreatedAtAmPm}</p>
+                <p id="style-2" class="card-text card-txt-color" style="max-height:45vh;overflow-y:auto;overflow-x:hidden;">${list[i].note}</p>
+                <p class="card-title" style="color:white;font-size:12px;">Edited on: ${postUpdatedAt.getDate()}-${(postUpdatedAt.getMonth())+1}-${postUpdatedAt.getFullYear()} ${(postUpdatedAt.getHours())}:${(postUpdatedAt.getMinutes())} ${postCreatedAtAmPm}</p>
+                <hr style="height:2px;color:white;background-color:white;">
+                <button id="cardBtn-${i}" class="btn btn-primary edit" style="background-color:${btnColor[randonNum]};">Edit note</button>
+                <button id="cardBtn-${i}" class="btn btn-primary delete" style="background-color: #202124;float:right;">Delete note</button>
+              </div>
+            </div>
+          </div>
+          `;
+            wrapper.innerHTML += item;
+          }
+
+          for (var i in list) {
+            var editBtn = document.getElementsByClassName('edit')[i]
+            var deleteBtn = document.getElementsByClassName('delete')[i]
+
+            editBtn.addEventListener('click', (function (item) {
+              return function () {
+                editItem(item)
+              }
+            })(list[i]))
+
+            deleteBtn.addEventListener('click', (function (item) {
+              return function () {
+                deleteItem(item)
+              }
+            })(list[i]))
+
+          }
+
+
+        });
+    }
+
+
+    var form = document.getElementById('form-wrapper');
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      console.log("Form submited");
+      var url = 'http://localhost:8000/api/create-note/';
+
+      if (activeItem != null) {
+        url = `http://localhost:8000/api/update-note/${activeItem.id}/`;
+        activeItem = null;
+      }
+
+      var title = document.getElementById('title').value;
+      var note = document.getElementById('note').value;
+      var user = document.getElementById('user').value;
+
+      fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-type': 'application/json',
+          'X-CSRFToken': csrftoken
+        },
+        body: JSON.stringify({ 'user_id':user, 'title': title, 'note': note })
+      }).then(function (response) {
+        buildList()
+        document.getElementById('form').reset()
+      });
+    });
+
+
+    function editItem(item) {
+
+      console.log("Edit clicked", item);
+      activeItem = item;
+      //document.getElementById('note').style.display = "inline";
+      if (true){
+        $('#note').css('display', 'inline');
+        $('#note-label').css('display', 'inline');
+      }
+
+      document.getElementById('title').value = activeItem.title;
+      document.getElementById('note').value = activeItem.note;
+
+    }
+
+
+    function deleteItem(item) {
+      console.log('Deleted');
+      var retVal = confirm("Do you want to delete this post ?");
+      if (retVal == true) {
+
+        var url = `http://localhost:8000/api/delete-note/${item.id}/`;
+        fetch(url, {
+          method: 'DELETE',
+          headers: {
+            'Content-type': 'application/json',
+            'X-CSRFToken': csrftoken
+          }
+        }).then((response) => {
+          buildList();
+        });
+        return true;
+
+      } else {
+        //document.write ("User does not want to continue!");
+        return false;
+      }
+
+    }
+
+
+    function amPm(hours){
+      if (hours >= 12){
+        return 'PM';
+      }
+      else{
+        return 'AM';
+      }
+    } 
+
+
+
+    $("*").on('click', function (e) {
+      var clicked = e.target.id;
+      if (clicked === 'title') {
+        $('#note').css('display', 'inline');
+        $('#note-label').css('display', 'inline');
+      }
+      else if (clicked === 'note') {
+        $('#note').css('display', 'inline');
+        $('#note-label').css('display', 'inline');
+      }
+      else {
+        $('#note').css('display', 'none');
+        $('#note-label').css('display', 'none');
+      }
+
+    });
+
+
+
+  //  document.getElementById('data-row-0').style.backgroundColor = bgColor[randonNum];
+    //document.getElementById('cardBtn').style.backgroundColor = btnColor[randonNum];
+
+  </script>
+
+
+
+
+</body>
+
+</html>
